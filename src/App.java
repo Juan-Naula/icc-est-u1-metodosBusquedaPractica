@@ -20,35 +20,33 @@ public class App {
         System.out.print("Ingrese la cantidad de personas: ");
         cantidad = scanner.nextInt();
 
-        Persona [] personas = new Persona[] {
-            
-        };
+        Persona[] personas = new Persona[cantidad];
 
         for (int i = 0; i < cantidad; i++) {
             System.out.print("Ingrese el nombre: ");
             nombre = scanner.next();
             System.out.print("Ingrese la edad: ");
             edad = scanner.nextInt();
-            new Persona(nombre, edad);
+            personas[i] = new Persona(nombre, edad);
             
         }
 
        
         System.out.print("Ingrese el nombre que quiere buscar: ");
-        nombre = scanner.next();
+        String nombreBuscar = scanner.next();
 
         System.out.println("Busqueda por nombre");
         metodoOrden.sortPersonasByName(personas);
-        Persona personaEncontrada = personaController.findByName(personas, nombre);
-        show.showPersonResult(personaEncontrada, nombre);
+        Persona personaEncontrada = personaController.findByName(personas, nombreBuscar);
+        show.showPersonResult(personaEncontrada, nombreBuscar);
 
         System.out.print("Ingrese la edad que quiere buscar: ");
-        edad = scanner.nextInt();
+        int edadBuscar = scanner.nextInt();
 
         System.out.println("Busqueda por edad");
         metodoOrden.sortPersonasByAge(personas);
-        Persona personaEncontradaByAge = personaController.findByAge(personas, edad);
-        show.showPersonResultAge(personaEncontradaByAge, edad);
+        Persona personaEncontradaByAge = personaController.findByAge(personas, edadBuscar);
+        show.showPersonResultAge(personaEncontradaByAge, edadBuscar);
 
 
     }

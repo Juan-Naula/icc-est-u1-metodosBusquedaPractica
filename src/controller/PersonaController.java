@@ -3,12 +3,12 @@ package controller;
 import model.Persona;
 
 public class PersonaController {
-    public Persona findByName(Persona[] personas, String name){
+    public Persona findByName(Persona[] personas, String nombreBuscar){
         int left = 0;
         int right = personas.length - 1;
         while (left <= right){
             int mid = left + (right - left) / 2;
-            int comparison = personas[mid].getName().compareTo(name);
+            int comparison = personas[mid].getName().compareTo(nombreBuscar);
             if(comparison == 0){
                 return personas[mid];
             } else if(comparison < 0){
@@ -20,7 +20,7 @@ public class PersonaController {
         return null;
     }
 
-    public Persona findByAge(Persona[] personas, int age){
+    public Persona findByAge(Persona[] personas, int edadBuscar){
         int izquierda = 0;
         int derecha = personas.length-1;
         
@@ -30,12 +30,12 @@ public class PersonaController {
             int medio = izquierda + (derecha - izquierda)/2;
             System.out.println("centro: " + medio);
             System.out.println("valorCentro: " + personas[medio].getAge());
-            if (personas[medio].getAge() == age) {
+            if (personas[medio].getAge() == edadBuscar) {
                 System.out.println("-> Encontrado");
                 return personas[medio];
             }
 
-            if (personas[medio].getAge() < age) {
+            if (personas[medio].getAge() < edadBuscar) {
                 izquierda = medio + 1;
                 System.out.println("-> Derecha");
             } else{
